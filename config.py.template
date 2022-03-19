@@ -1,0 +1,5 @@
+"Taipan config file"
+
+api_hash = "Your api hash"
+api_id = "Your api id"
+session_name = "Any name for this session"
