@@ -1,9 +1,9 @@
 import datetime
 import random
 import re
-import colorama
+
 import pyrogram
-import requests
+
 from customClient import CustomClient
 
 
@@ -11,10 +11,10 @@ class PlaceHolders:
     def __init__(self, client: CustomClient):
         print("placeHolders module init!")
 
-        client.addCommandDescription("now", "insert now time and date", "{{now}}")
-        client.addCommandDescription("now:time", "inserts now time", "{{now:time}}")
-        client.addCommandDescription("now:date", "inserts now date", "{{now:date}}")
-        client.addCommandDescription("random", "inserts random number", "{{random:[from]:[to]}}")
+        client.add_command_description("now", "insert now time and date", "{{now}}")
+        client.add_command_description("now:time", "inserts now time", "{{now:time}}")
+        client.add_command_description("now:date", "inserts now date", "{{now:date}}")
+        client.add_command_description("random", "inserts random number", "{{random:[from]:[to]}}")
 
         @client.on_message(pyrogram.filters.me & pyrogram.filters.regex("{{now}}"))
         def now_placeholder(_, message: pyrogram.types.Message):
@@ -38,23 +38,23 @@ class PlaceHolders:
             #   print(f"{i}: {regex.groups()[i]}")
 
             command = regex.groups()[0]
-            fromRandom = int(regex.groups()[1])
-            toRandom = int(regex.groups()[2])
-            needRandom = True
-            number = toRandom
+            from_random = int(regex.groups()[1])
+            to_random = int(regex.groups()[2])
+            need_random = True
+            number = to_random
 
-            if fromRandom > toRandom:
-                fromRandom, toRandom = toRandom, fromRandom
-            elif fromRandom == toRandom:
-                needRandom = False
+            if from_random > to_random:
+                from_random, to_random = to_random, from_random
+            elif from_random == to_random:
+                need_random = False
 
-            if needRandom:
-                number = random.randint(fromRandom, toRandom)
+            if need_random:
+                number = random.randint(from_random, to_random)
 
             message.edit_text(message.text.replace(command, str(number)))
 
-        #@client.on_message(pyrogram.filters.me & pyrogram.filters.regex("({{rainbow:(.+)}})"))
-        #def rainbow_placeholder(_, message: pyrogram.types.Message):
+        # @client.on_message(pyrogram.filters.me & pyrogram.filters.regex("({{rainbow:(.+)}})"))
+        # def rainbow_placeholder(_, message: pyrogram.types.Message):
         #    regex = re.search("({{rainbow:(.+)}})", message.text, re.IGNORECASE)
         #    all = regex.groups()[0]
         #    string = regex.groups()[1]

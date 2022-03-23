@@ -1,14 +1,18 @@
 import re
 import urllib.parse
-import pyrogram
+
 import googlesearch
+import pyrogram
+
 from customClient import CustomClient
+
 
 class GoogleFind:
     def __init__(self, client: CustomClient):
 
-        client.addCommandDescription("google", "Google any query", ";google [query] lang={lang}")
+        client.add_command_description("google", "Google any query", ";google [query] lang={lang}")
         print("googleFind module init!")
+
         @client.on_message(pyrogram.filters.me & pyrogram.filters.command("google", prefixes=";"))
         def command(_, message: pyrogram.types.Message):
             message.edit_text("started search")
@@ -22,15 +26,13 @@ class GoogleFind:
             args.pop(0)
             search = " ".join(args)
 
+            search_uri = urllib.parse.quote(search)
 
-            searchURI = urllib.parse.quote(search)
+            searched = googlesearch.search(search_uri, num_results=5, lang=lang)
 
-            searched = googlesearch.search(searchURI, num_results=5, lang=lang)
+            text = f"results for {search}:"
+            for result_id, result in enumerate(searched):
+                text += f"\n{result_id + 1}: {result}\n"
 
-            str = f"results for {search}:"
-            for id, result in enumerate(searched):
-                str += f"\n{id+1}: {result}\n"
-
-                #print(result)
-            message.edit_text(str)
-
+                # print(result)
+            message.edit_text(text)
