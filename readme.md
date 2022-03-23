@@ -26,6 +26,17 @@ session_name = "Any name for this session"
 
 Usage: ` ;reaction {reaction}`
 
+### help
+**Send this text**
+
+Usage: `;help`
+
+### google
+**Google any query**
+
+Usage: `;google [query] lang={lang}`
+## Placeholders
+
 ### now
 **insert now time and date**
 
@@ -46,12 +57,5 @@ Usage: `{{now:date}}`
 
 Usage: `{{random:[from]:[to]}}`
 
-### google
-**Google any query**
 
-Usage: `;google [query] lang={lang}`
 
-### help
-**Send this text**
-
-Usage: `;help`
