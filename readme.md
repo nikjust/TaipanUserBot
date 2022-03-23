@@ -1,7 +1,7 @@
 # Taipan - Userbot for telegram written in pyrogram
-#Getting started
+# Getting started
 
-##Configuring
+## Configuring
 
 1. Create config.py file
 2. Configure it by template like this:
@@ -19,39 +19,39 @@ session_name = "Any name for this session"
 7. Write your phone number in console
 8. Copy verification code from telegram and paste it to console
 
-#Commands and placeholders
-##Commands
-###reaction
+# Commands and placeholders
+## Commands
+### reaction
 **Send anime reaction gif**
 
 Usage: ` ;reaction {reaction}`
 
-###now
+### now
 **insert now time and date**
 
 Usage: `{{now}}`
 
-###now:time
+### now:time
 **inserts now time**
 
 Usage: `{{now:time}}`
 
-###now:date
+### now:date
 **inserts now date**
 
 Usage: `{{now:date}}`
 
-###random
+### random
 **inserts random number**
 
 Usage: `{{random:[from]:[to]}}`
 
-###google
+### google
 **Google any query**
 
 Usage: `;google [query] lang={lang}`
 
-###help
+### help
 **Send this text**
 
 Usage: `;help`
